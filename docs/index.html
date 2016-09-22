@@ -40,6 +40,15 @@
         url = "http://petstore.swagger.io/v2/swagger.json";
       }
 
+      var spec;
+      $.getJSON("./swagspec.json", function(json) {
+        spec = json;
+      });
+      //var spec = getJSON;
+      //var spec = require('./swagspec.json'); //with path
+
+
+
       hljs.configure({
         highlightSizeThreshold: 5000
       });
@@ -50,6 +59,7 @@
       }
       window.swaggerUi = new SwaggerUi({
         url: url,
+        spec: spec,
         dom_id: "swagger-ui-container",
         supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
         onComplete: function(swaggerApi, swaggerUi){
